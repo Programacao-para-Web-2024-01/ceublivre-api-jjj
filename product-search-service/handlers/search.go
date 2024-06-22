@@ -14,7 +14,7 @@ func SearchProducts(w http.ResponseWriter, r *http.Request) {
 	priceMax, _ := strconv.ParseFloat(query.Get("price_max"), 64)
 	category := query.Get("category")
 	sortBy := query.Get("sort_by")
-	sortOrder := query.Get("sortOrder")
+	sortOrder := query.Get("sort_order")
 
 	cacheKey := r.URL.String()
 	if cachedProducts, found := services.GetFromCache(cacheKey); found {

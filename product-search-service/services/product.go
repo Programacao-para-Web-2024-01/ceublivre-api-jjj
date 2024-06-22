@@ -19,8 +19,9 @@ var products = []models.Product{
 	{ID: "10", Name: "Monitor", Brand: "BrandJ", Price: 220, Category: "Electronics", Rating: 4.4},
 }
 
-const CacheDuration = 5 * 60 //5 min
-func SearchProducts(keyword string, priceMin, priceMax float64, category, sortBy string, sortOrder string) []models.Product {
+const CacheDuration = 5 * 60 // 5 minutos
+
+func SearchProducts(keyword string, priceMin, priceMax float64, category, sortBy, sortOrder string) []models.Product {
 	var filteredProducts []models.Product
 
 	for _, product := range products {
@@ -39,51 +40,37 @@ func SearchProducts(keyword string, priceMin, priceMax float64, category, sortBy
 	return filteredProducts
 }
 
-func contains(source, keyword string) bool {
-	return strings.Contains(strings.ToLower(source), strings.ToLower(keyword))
-}
-
 func sortProducts(products []models.Product, sortBy, sortOrder string) {
+	ascending := strings.ToLower(sortOrder) != "desc"
+
 	switch sortBy {
 	case "price":
-		if sortOrder == "desc" {
-			sort.Slice(products, func(i, j int) bool {
-				return products[i].Price > products[j].Price
-			})
-		} else {
-			sort.Slice(products, func(i, j int) bool {
+		sort.Slice(products, func(i, j int) bool {
+			if ascending {
 				return products[i].Price < products[j].Price
-			})
-		}
+			}
+			return products[i].Price > products[j].Price
+		})
 	case "rating":
-		if sortOrder == "desc" {
-			sort.Slice(products, func(i, j int) bool {
-				return products[i].Rating > products[j].Rating
-			})
-		} else {
-			sort.Slice(products, func(i, j int) bool {
+		sort.Slice(products, func(i, j int) bool {
+			if ascending {
 				return products[i].Rating < products[j].Rating
-			})
-		}
+			}
+			return products[i].Rating > products[j].Rating
+		})
 	case "name":
-		if sortOrder == "desc" {
-			sort.Slice(products, func(i, j int) bool {
-				return strings.ToLower(products[i].Name) > strings.ToLower(products[j].Name)
-			})
-		} else {
-			sort.Slice(products, func(i, j int) bool {
+		sort.Slice(products, func(i, j int) bool {
+			if ascending {
 				return strings.ToLower(products[i].Name) < strings.ToLower(products[j].Name)
-			})
-		}
+			}
+			return strings.ToLower(products[i].Name) > strings.ToLower(products[j].Name)
+		})
 	case "brand":
-		if sortOrder == "desc" {
-			sort.Slice(products, func(i, j int) bool {
-				return strings.ToLower(products[i].Brand) > strings.ToLower(products[j].Brand)
-			})
-		} else {
-			sort.Slice(products, func(i, j int) bool {
+		sort.Slice(products, func(i, j int) bool {
+			if ascending {
 				return strings.ToLower(products[i].Brand) < strings.ToLower(products[j].Brand)
-			})
-		}
+			}
+			return strings.ToLower(products[i].Brand) > strings.ToLower(products[j].Brand)
+		})
 	}
 }
