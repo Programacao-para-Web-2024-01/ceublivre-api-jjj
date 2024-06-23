@@ -1,5 +1,3 @@
-// PEDI PRO CHAT GEPETAS FAZER UM TESTE PRA VER SE TA TUDO CERTINHO
-
 package services
 
 import (
