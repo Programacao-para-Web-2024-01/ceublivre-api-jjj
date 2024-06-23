@@ -17,6 +17,8 @@ var products = []models.Product{
 	{ID: "8", Name: "Keyboard", Brand: "BrandH", Price: 70, Category: "Accessories", Rating: 4.0},
 	{ID: "9", Name: "Mouse", Brand: "BrandI", Price: 40, Category: "Accessories", Rating: 3.8},
 	{ID: "10", Name: "Monitor", Brand: "BrandJ", Price: 220, Category: "Electronics", Rating: 4.4},
+	{ID: "11", Name: "Smartphone", Brand: "BrandB", Price: 5060, Category: "Electronics", Rating: 4.3},
+	{ID: "12", Name: "Smartphone", Brand: "BrandB", Price: 5040, Category: "Electronics", Rating: 4.0},
 }
 
 const CacheDuration = 5 * 60 // 5 minutos

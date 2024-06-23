@@ -38,7 +38,7 @@ function renderProductDetails(product) {
     const productDetails = document.getElementById('product-details');
     
     productDetails.innerHTML = `
-        <img src="${product.imageURL}" alt="${product.name}">
+        <img src="${product.imageURL || 'placeholder.jpg'}" alt="${product.name}">
         <h2>${product.name}</h2>
         <p>${product.description || 'Descrição não disponível'}</p>
         <p><strong>Preço:</strong> $${product.price}</p>
