@@ -21,7 +21,7 @@ function fetchProductDetails(productName) {
         .then(products => {
             console.log('Produtos retornados:', products); // Log para depuração
             if (products.length > 0) {
-                const product = products[0]; // Supondo que o primeiro produto da lista é o que queremos
+                const product = products[0]; 
                 document.title = product.name; // Define o título da página com o nome do produto
                 const productTitle = document.getElementById('product-title');
                 productTitle.textContent = product.name; // Define o título no header com o nome do produto
