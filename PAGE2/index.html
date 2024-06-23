@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <title>CEUB Livre</title>
+</head>
+<body>
+    <header>
+        <h1>CEUB Livre</h1>
+        <input type="text" id="search-input" placeholder="Busque por produtos...">
+        <button id="search-button">Buscar</button>
+    </header>
+    
+    <canvas></canvas>    
+
+    <main>
+        <section id="product-list">
+            <!-- Os produtos serão carregados aqui -->
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 CEUB Livre. Todos os direitos reservados.</p>
+    </footer>  
+
+    <script>
+        document.getElementById('search-button').addEventListener('click', () => {
+            const searchInput = document.getElementById('search-input').value;
+            window.location.href = `product.html?name=${encodeURIComponent(searchInput)}`;
+        });
+    </script>
+    </script>
+    <script src="animation.js"></script>
+</body>
+</html>
